@@ -1,12 +1,17 @@
-﻿namespace DemoProject.Components.Pages;
+﻿using Microsoft.AspNetCore.Components;
+
+namespace DemoProject.Components.Pages;
 
 using DemoProject.Entities;
 
 public partial class Home
 {
-	public string Name { get; set; } = "Martin";
-
-	public List<Snack>? Snacks { get; set; } =
+	[Inject] public NavigationManager NavigationManager { get; set; }
+	
+	[SupplyParameterFromForm(FormName = "AddSnackForm")]
+	public Snack NewSnack { get; set; } = new();
+	
+	public static List<Snack>? Snacks { get; set; } =
 	[
 		new()
 		{
@@ -26,4 +31,13 @@ public partial class Home
 				"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.explicit.bing.net%2Fth%2Fid%2FOIP.h2ZBNdjuxvqgKoB9JT8zZgHaFX%3Fcb%3D12%26pid%3DApi&f=1&ipt=85d98b5f02eed9423ebcf591fd7500267a28a092da84a035eab8d64f9bf270a7"
 		},
 	];
+
+	public void AddSnack()
+	{
+		Thread.Sleep(2000);
+		Console.WriteLine($"Snack toevoegen: {NewSnack.Name}");
+		Snacks!.Add(NewSnack);
+		// NewSnack = new();
+		NavigationManager.NavigateTo("/");
+	}
 }

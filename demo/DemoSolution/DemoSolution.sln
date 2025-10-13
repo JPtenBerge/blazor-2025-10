@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAssemblyDemo", "WebAssemblyDemo\WebAssemblyDemo.csproj", "{555310C4-7386-43C5-8F19-0EAE7F11243B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerDemo", "ServerDemo\ServerDemo.csproj", "{DD58DBBD-5673-4020-BD2C-094DAC08C103}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoProject", "DemoProject\DemoProject.csproj", "{EB85C74A-92CE-4C46-B721-4BC4766A00E4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{555310C4-7386-43C5-8F19-0EAE7F11243B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{555310C4-7386-43C5-8F19-0EAE7F11243B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{555310C4-7386-43C5-8F19-0EAE7F11243B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{555310C4-7386-43C5-8F19-0EAE7F11243B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD58DBBD-5673-4020-BD2C-094DAC08C103}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD58DBBD-5673-4020-BD2C-094DAC08C103}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD58DBBD-5673-4020-BD2C-094DAC08C103}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD58DBBD-5673-4020-BD2C-094DAC08C103}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB85C74A-92CE-4C46-B721-4BC4766A00E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB85C74A-92CE-4C46-B721-4BC4766A00E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB85C74A-92CE-4C46-B721-4BC4766A00E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB85C74A-92CE-4C46-B721-4BC4766A00E4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

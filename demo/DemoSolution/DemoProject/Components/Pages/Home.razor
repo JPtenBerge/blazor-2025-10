@@ -1,0 +1,37 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<h1>Snacks</h1>
+
+Naam: @Name
+
+@if (Snacks is null)
+{
+    <text>Geen snacks vandaag.</text>
+    <p>Echt geen snacks</p>
+}
+else
+{
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Naam</th>
+            <th>Rating</th>
+            <th>Foto</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var snack in Snacks)
+        {
+            <tr class="@(snack.Rating > 3m ? "heerlijk" : "")">
+                <td>@snack.Id</td>
+                <td>@snack.Name</td>
+                <td>@snack.Rating</td>
+                <td><img src="@snack.PhotoUrl"></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

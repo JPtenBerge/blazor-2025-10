@@ -4,49 +4,60 @@
 
 <h1>Snacks</h1>
 
-<EditForm Model="NewSnack" OnValidSubmit="AddSnack" FormName="AddSnackForm" Enhance>
-    <DataAnnotationsValidator />
-    @* <FluentValidationValidator /> *@
-    
-    @* <input name="NewSnack.Name"> *@
-    <InputText @bind-Value="NewSnack.Name" />
-    <ValidationMessage For="() => NewSnack.Name" />
-    
-    <InputNumber @bind-Value="NewSnack.Rating" type="range" min="1" max="5" step="0.5" />
-    <ValidationMessage For="() => NewSnack.Rating" />
-    
-    <InputText @bind-Value="NewSnack.PhotoUrl" />
-    <ValidationMessage For="() => NewSnack.PhotoUrl" />
-    
-    <button>Add snack</button>
-</EditForm>
+<main>
+    <EditForm Model="NewSnack" OnValidSubmit="AddSnack" FormName="AddSnackForm" Enhance>
+        <DataAnnotationsValidator/>
+        @* <FluentValidationValidator /> *@
 
-@if (Snacks is null)
-{
-    <text>Geen snacks vandaag.</text>
-    <p>Echt geen snacks</p>
-}
-else
-{
-    <table>
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Naam</th>
-            <th>Rating</th>
-            <th>Foto</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var snack in Snacks)
-        {
-            <tr class="@(snack.Rating > 3m ? "heerlijk" : "")">
-                <td>@snack.Id</td>
-                <td>@snack.Name</td>
-                <td>@snack.Rating</td>
-                <td><img src="@snack.PhotoUrl"></td>
+        <ol>
+            <li>
+                <label for="input-name">Naam:</label>
+                <InputText @bind-Value="NewSnack.Name" id="input-name"/>
+                <div><ValidationMessage For="() => NewSnack.Name"/></div>
+            </li>
+            <li>
+                <label for="input-rating">Rating:</label>
+                <InputNumber @bind-Value="NewSnack.Rating" type="range" min="1" max="5" step="0.5" id="input-rating"/>
+                <div><ValidationMessage For="() => NewSnack.Rating"/></div>
+            </li>
+            <li>
+                <label for="input-photo-url">Foto URL:</label>
+                <InputText @bind-Value="NewSnack.PhotoUrl" id="input-photo-url"/>
+                <div><ValidationMessage For="() => NewSnack.PhotoUrl"/></div>
+            </li>
+            <li>
+                <button>Add snack</button>
+            </li>
+        </ol>
+    </EditForm>
+
+    @if (Snacks is null)
+    {
+        <text>Geen snacks vandaag.</text>
+        <p>Echt geen snacks</p>
+    }
+    else
+    {
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Naam</th>
+                <th>Rating</th>
+                <th>Foto</th>
             </tr>
-        }
-        </tbody>
-    </table>
-}
+            </thead>
+            <tbody>
+            @foreach (var snack in Snacks)
+            {
+                <tr class="@(snack.Rating > 3m ? "heerlijk" : "")">
+                    <td>@snack.Id</td>
+                    <td>@snack.Name</td>
+                    <td>@snack.Rating</td>
+                    <td><img src="@snack.PhotoUrl"></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+</main>

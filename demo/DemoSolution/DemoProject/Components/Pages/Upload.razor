@@ -1,0 +1,24 @@
+﻿@page "/Upload"
+@using DemoProject.Entities
+<h3>Upload</h3>
+
+<EditForm Model="Snack" OnSubmit="Handle" enctype="multipart/form-data" FormName="doe">
+    <input type="file" name="Bestand">
+    <button>Submit</button>
+</EditForm>
+
+
+@code {
+    public Snack Snack { get; set; } = new();
+    [SupplyParameterFromForm] public IFormFile Bestand { get; set; }
+
+
+    async Task Handle()
+    {
+        var stream = Bestand.OpenReadStream();
+        using var reader = new StreamReader(stream);
+        var content = await reader.ReadToEndAsync(); // 4GB
+        Console.WriteLine($"Yay content: {content}");
+    }
+
+}

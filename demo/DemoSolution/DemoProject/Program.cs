@@ -1,9 +1,12 @@
 using DemoProject.Components;
+using DemoProject.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents();
+
+builder.Services.AddSingleton<ISnackRepository, SnackRepository>();
 
 var app = builder.Build();
 

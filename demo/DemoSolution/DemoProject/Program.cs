@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddMudServices();
 
-builder.Services.AddDbContext<SnackContext>(options =>
+builder.Services.AddDbContextFactory<SnackContext>(options =>
 {
 	options.UseSqlServer(builder.Configuration.GetConnectionString("SnackContext"));
 });

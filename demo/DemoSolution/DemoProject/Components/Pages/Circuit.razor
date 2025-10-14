@@ -1,0 +1,56 @@
+@page "/Circuit"
+@using DemoProject.DataAccess
+@using DemoProject.Entities
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.EntityFrameworkCore.Internal
+@inject IDbContextFactory<SnackContext> ContextFactory
+@rendermode InteractiveServer
+<h3>Circuit</h3>
+
+<MudButton OnClick="GetAll">Get all</MudButton>
+<MudButton OnClick="Add">Add</MudButton>
+<MudButton OnClick="Edit">Edit</MudButton>
+
+<MudNumericField @bind-Value="ToEditSnack.Id"/>
+
+@if (Snacks is not null)
+{
+    <ul>
+        @foreach (var snack in Snacks)
+        {
+            <li>@snack.Name heeft id @snack.Id</li>
+        }
+    </ul>
+}
+
+@code {
+    public List<Snack>? Snacks { get; set; }
+    public Snack ToAddSnack { get; set; } = new() { Name = "q", Rating = 1, PhotoUrl = "q" };
+    public Snack ToEditSnack { get; set; } = new() { Id = 4, Name = "w", Rating = 1, PhotoUrl = "q" };
+
+    async Task GetAll()
+    {
+        await using var context = await ContextFactory.CreateDbContextAsync();
+        Snacks = await context.Snacks.ToListAsync();
+    }
+
+    async Task Add()
+    {
+        await using var context = await ContextFactory.CreateDbContextAsync();
+        context.Snacks.Add(ToAddSnack);
+        await context.SaveChangesAsync();
+    }
+
+    async Task Edit()
+    {
+        await using var context = await ContextFactory.CreateDbContextAsync();
+        context.Update(ToEditSnack);
+        // var fromDb = await Context.Snacks.SingleAsync(x => x.Id == ToEditSnack.Id);
+        // fromDb.Name = ToEditSnack.Name;
+        // fromDb.PhotoUrl = ToEditSnack.PhotoUrl;
+        // fromDb.Rating = ToEditSnack.Rating;
+
+        await context.SaveChangesAsync();
+    }
+
+}

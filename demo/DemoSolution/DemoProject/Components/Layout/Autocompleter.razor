@@ -1,0 +1,15 @@
+﻿@using System.Text.Json
+@typeparam T
+
+<input @bind-value="Query" @bind-value:event="oninput" @onkeyup="Autocomplete" @onkeydown="HandleKeyDown"/>
+
+@if (Suggestions is not null)
+{
+    <ul>
+        @for (var i = 0; i < Suggestions.Count; i++)
+        {
+            var suggestion = Suggestions[i];
+            <li class="@(i == ActiveSuggestionIndex ? "highlight" : "")">@JsonSerializer.Serialize(suggestion)</li>
+        }
+    </ul>
+}

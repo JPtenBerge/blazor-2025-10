@@ -14,7 +14,7 @@ builder.Services.AddDbContext<SnackContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("SnackContext"));
 });
 
-builder.Services.AddRazorComponents();
+builder.Services.AddRazorComponents().AddInteractiveServerComponents();
 
 // builder.Services.AddSingleton<ISnackRepository, SnackRepository>();
 builder.Services.AddTransient<ISnackRepository, SnackDbRepository>();
@@ -35,6 +35,6 @@ app.UseHttpsRedirection();
 app.UseAntiforgery();
 
 app.MapStaticAssets();
-app.MapRazorComponents<App>();
+app.MapRazorComponents<App>().AddInteractiveServerRenderMode();
 
 app.Run();

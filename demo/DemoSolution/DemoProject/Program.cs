@@ -1,5 +1,7 @@
 using DemoProject.Components;
+using DemoProject.DataAccess;
 using DemoProject.Repositories;
+using Microsoft.EntityFrameworkCore;
 using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,9 +9,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddMudServices();
 
+builder.Services.AddDbContext<SnackContext>(options =>
+{
+	options.UseSqlServer(builder.Configuration.GetConnectionString("SnackContext"));
+});
+
 builder.Services.AddRazorComponents();
 
-builder.Services.AddSingleton<ISnackRepository, SnackRepository>();
+// builder.Services.AddSingleton<ISnackRepository, SnackRepository>();
+builder.Services.AddTransient<ISnackRepository, SnackDbRepository>();
 
 var app = builder.Build();
 

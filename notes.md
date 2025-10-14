@@ -128,3 +128,10 @@ Lifetimes van dependencies?
 - huishoudelijk - codesplitting
 
 https://learn.microsoft.com/en-us/aspnet/core/blazor/fundamentals/dependency-injection?view=aspnetcore-9.0#service-lifetime
+
+
+## Coole links
+
+- [Awesome Blazor](https://github.com/AdrienTorris/awesome-blazor?tab=readme-ov-file#libraries--extensions)
+- [MudBlazor.StaticInput](https://github.com/0phois/MudBlazor.StaticInput)
+- [Dependency injection bij Blazor WebAssembly - Scoped is Singleton](https://learn.microsoft.com/en-us/aspnet/core/blazor/fundamentals/dependency-injection?view=aspnetcore-9.0#service-lifetime)

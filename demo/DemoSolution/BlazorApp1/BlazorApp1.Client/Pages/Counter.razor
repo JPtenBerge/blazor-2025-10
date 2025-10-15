@@ -1,0 +1,63 @@
+﻿@page "/counter"
+@using Demo.Shared.Entities
+@using Demo.Shared.Repositories
+@rendermode InteractiveWebAssembly
+@inject ISnackRepository SnackRepository
+@inject PersistentComponentState PersistentComponentState
+
+<PageTitle>Counter</PageTitle>
+
+Teller: @Teller<br/>
+Renderer: @RendererInfo.Name<br/>
+Is interactive: @RendererInfo.IsInteractive<br/>
+
+<button @onclick="Increment">Increment</button>
+
+<h1>Interactive WebAssembly</h1>
+
+@if (Snacks is not null)
+{
+    <ul>
+        @foreach (var snack in Snacks)
+        {
+            <li>@snack.Name</li>
+        }
+    </ul>
+}
+
+@code {
+    public int Teller { get; set; }
+    public List<Snack>? Snacks { get; set; }
+
+    void Increment()
+    {
+        Teller++;
+    }
+
+    // zowel server-side als client-side
+    protected override async Task OnInitializedAsync()
+    {
+        PersistentComponentState.RegisterOnPersisting(PersistSnacks);
+
+        if (PersistentComponentState.TryTakeFromJson<List<Snack>>("snacks", out var snacks))
+        {
+            // client-side
+            Console.WriteLine("Hey ik heb al snacks!");
+            Snacks = snacks;
+        }
+        else
+        {
+            // server-side: prerenderen
+            Snacks = (await SnackRepository.GetAllAsync()).ToList();
+            Console.WriteLine("Snacks ingesteld");
+        }
+    }
+
+    Task PersistSnacks()
+    {
+        Console.WriteLine("Snacks persisten");
+        PersistentComponentState.PersistAsJson("snacks", Snacks);
+        return Task.CompletedTask;
+    }
+
+}

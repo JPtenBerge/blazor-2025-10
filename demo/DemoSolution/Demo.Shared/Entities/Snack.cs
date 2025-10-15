@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DemoProject.Entities;
+namespace Demo.Shared.Entities;
 
 public class Snack
 {

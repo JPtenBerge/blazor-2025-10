@@ -1,9 +1,9 @@
-﻿using DemoProject.Repositories;
+﻿using Demo.Shared.Entities;
+using Demo.Shared.Repositories;
+using DemoProject.Repositories;
 using Microsoft.AspNetCore.Components;
 
 namespace DemoProject.Components.Pages;
-
-using DemoProject.Entities;
 
 public partial class Home : ComponentBase
 {

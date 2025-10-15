@@ -30,4 +30,15 @@ public static class SnackDtoExtensions
             PhotoUrl = entity.PhotoUrl
         };
     }
+
+    public static Snack ToEntity(this SnackDto dto)
+    {
+        return new()
+        {
+            Id = dto.Id,
+            Name = dto.Name,
+            Rating = dto.Rating,
+            PhotoUrl = dto.PhotoUrl
+        };
+    }
 }

@@ -20,6 +20,14 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
+// builder.Services.AddCors(options =>
+// {
+//     options.AddPolicy("frontend", policy =>
+//     {
+//         policy.WithOrigins("http://localhost:5075").AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+//     });
+// });
+
 // builder.Services.AddSingleton<ISnackRepository, SnackRepository>();
 builder.Services.AddTransient<ISnackRepository, SnackDbRepository>();
 
@@ -39,6 +47,8 @@ else
 }
 
 app.UseHttpsRedirection();
+
+// app.UseCors("frontend");
 
 app.UseAntiforgery();
 

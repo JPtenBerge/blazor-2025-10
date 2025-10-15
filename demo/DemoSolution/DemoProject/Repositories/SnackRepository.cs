@@ -31,6 +31,11 @@ public class SnackRepository : ISnackRepository
 		return Task.FromResult(_snacks.AsEnumerable());
 	}
 
+	public Task<Snack?> GetAsync(int id)
+	{
+		throw new NotImplementedException();
+	}
+
 	public Task<Snack> AddAsync(Snack newSnack)
 	{
 		newSnack.Id = _snacks.Any() ? _snacks.Max(x => x.Id) + 1 : 1;

@@ -1,6 +1,7 @@
 using Demo.Shared.Repositories;
 using DemoProject.Components;
 using DemoProject.DataAccess;
+using DemoProject.Endpoints;
 using DemoProject.Repositories;
 using Microsoft.EntityFrameworkCore;
 using MudBlazor.Services;
@@ -40,6 +41,8 @@ else
 app.UseHttpsRedirection();
 
 app.UseAntiforgery();
+
+app.MapSnackEndpoints();
 
 app.MapStaticAssets();
 app.MapRazorComponents<App>()

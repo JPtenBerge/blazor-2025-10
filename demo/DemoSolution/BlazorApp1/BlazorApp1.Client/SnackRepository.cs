@@ -10,6 +10,11 @@ public class SnackRepository : ISnackRepository
         throw new NotImplementedException();
     }
 
+    public Task<Snack?> GetAsync(int id)
+    {
+        throw new NotImplementedException();
+    }
+
     public Task<Snack> AddAsync(Snack newSnack)
     {
         throw new NotImplementedException();

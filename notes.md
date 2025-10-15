@@ -130,8 +130,112 @@ Lifetimes van dependencies?
 https://learn.microsoft.com/en-us/aspnet/core/blazor/fundamentals/dependency-injection?view=aspnetcore-9.0#service-lifetime
 
 
+## ASP.NET Core  ReST API
+
+- API die zelf geen state heeft
+- ReST: Representational State Transfer
+- HTTP verbs
+  - GET     ophalen
+  - POST    aanmaken              / wijzigen
+  - PUT     wijzigen              / aanmaken
+  - PATCH   deel wijzigen
+  - DELETE  verwijderen
+    ```sh
+    POST  api/car     { make: '...', model: '...' }
+    POST  api/car     { make: '...', model: '...' }
+    POST  api/car     { make: '...', model: '...' }
+
+    PUT   api/car/16  { make: '...', model: '...' }
+    PUT   api/car/16  { make: '...', model: '...' }
+    PUT   api/car/16  { make: '...', model: '...' }
+    ```
+    idempotency
+
+### HTTP-statuscodes
+
+- 2xx - SUCCESS
+  - 200 OK
+  - 201 Created
+  - 204 No Content
+- 3xx - REDIRECT
+  - 301/302 Temporary/permanent
+- 4xx - CLIENT ERROR
+  - 400 Bad Request (jij doet iets fout)
+  - 401 Unauthorized (geen token)
+  - 403 Forbidden (wel een token, je mag er gewoon niet bij)
+  - 404 Not Found
+  - 405 Method Not Allowed   POST => endpoint die geen POST ondersteunt
+  - 415 Mediatype Not Supported   XML => endpoint die geen XML ondersteunt
+  - 422 Unprocessable Entity
+  - 418 I'm a teapot
+- 5xx - SERVER ERROR
+  - 500 Internal Server Error  (ik de server doe iets fout)
+
+### ASP.NET Core en REST
+
+- controllers - ASP.NET Web API 2010 /  ASP.NET Core 2016
+  - endpoint "netjes" in classes
+  - DI n constructor
+  - rompslomp: ControllerFactory action filters [HttpGet] validatie [Required]
+  - [Consumes()] [Produces()]
+- minimal API - .NET 6
+  - `app.MapGet()` `app.MapPost()`   lambdas
+    - je kan hier zelf je structuur bedenken
+  - lijkt sterk op Express.js
+  - DI hier in de methode
+  - performance++ want DI bij methode maar ook minder rompslomp eromheen
+    - FluentValidation
+  - OpenAPI docs: TypedResults - .NET 8
+
+### Hoe testen we ons POST-endpoint?
+
+- Postman - paywall
+- Insomnia - paywall
+- VS Code extensions
+  - REST Client
+  - Thunder Client
+- Rider/VS ingebakken HTTPClient
+- curl
+- Bruno
+- Hoppscotch
+
+#### Wat is er lastig met REST APIs?
+
+versionering! Qua URL's niet zozeer:
+
+- api/v1/car
+- api/car?v=1
+- X-API-VERSION=1
+
+Maar wel vanaf deze endpoints je services/repos/db aanspreken en logica kunnen hergebruiken.
+
+## DTOs
+
+- security - over-POSTing `context.Snacks.Add(watermetpostwordtmeegestuurd);`
+- validatie per DTO
+- loskoppeling db-entiteiten en wat je aan de buitenwereld kenbaar maakt
+- consistente werkwijze
+- mappers zijn benodigd om van Entity instance naar DTO instance gaan
+  - AI zeer handig van pas komt
+  - libs: AutoMapper (license) Mapster Mapperly
+    - Meestal heb je dit niet nodig. [En wordt meestal toch foutief toegepast](https://www.reddit.com/r/csharp/comments/ykcp7a/comment/iusjix3/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button). Pas ook op met refactoren ivm `null` in JSON`-output:
+    ```cs
+    // handmatig
+    entity.Name = dto.Name;
+    dto.Name = entity.FullName; // refactor: rename past mapping aan
+
+    // AutoMapper  Mapster
+    // => reflection. refactor: rename past mapping NIET aan
+    //JSON-output: "name": null
+    ```
+    - AutoMapper ondersteunt wel unittesten om dit te voorkomen: https://docs.automapper.io/en/stable/Configuration-validation.html
+      - Maar nog steeds, je hebt het niet nodig
+- dragen een klein beetje bij aan versionering in de zin dat je properties kan toevoegen aan je DTOs
+
 ## Coole links
 
 - [Awesome Blazor](https://github.com/AdrienTorris/awesome-blazor?tab=readme-ov-file#libraries--extensions)
 - [MudBlazor.StaticInput](https://github.com/0phois/MudBlazor.StaticInput)
 - [Dependency injection bij Blazor WebAssembly - Scoped is Singleton](https://learn.microsoft.com/en-us/aspnet/core/blazor/fundamentals/dependency-injection?view=aspnetcore-9.0#service-lifetime)
+- [Dapper, alternatief op EF Core](https://github.com/DapperLib/Dapper)
+

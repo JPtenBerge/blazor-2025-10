@@ -232,6 +232,39 @@ Maar wel vanaf deze endpoints je services/repos/db aanspreken en logica kunnen h
       - Maar nog steeds, je hebt het niet nodig
 - dragen een klein beetje bij aan versionering in de zin dat je properties kan toevoegen aan je DTOs
 
+## `HttpClient`
+
+- prima ding, al jaren in .NET aanwezig
+- heeft extensions methods om met JSON om te gaan
+- vertaalt naar een `fetch()`-call via WebAssembly
+- laat wel wat te wensen over
+  - testen
+  - JSON-returnwaarden bij POST/PUT is wat lomp/omslachtig:
+    ```cs
+    var response = await http.PostAsJsonAsync<decimal>("api/snacks", 12m);
+    var updatedSnack = response.Content.ReadFromJsonAsync<Snack>();
+    ```
+    - typed HTTP clients (simpel wrapperlaagje met vriendelijkere methoden) vergemakkelijken dat
+      ```cs
+      var snacks = await snackClient.GetAllAsync();
+      var updatedSnack = await snackClient.AddAsync(snack);
+      ```
+    - [lib als Flurl](https://flurl.dev/) kan helpen
+      ```cs
+      "https://api.com".GetFromJsonAsync<...>();
+      ```
+
+## CORS: cross-origin resource sharing
+
+Een AJAX-call doen vanaf domein A naar domein B.
+- bla.nl => ding.nl
+- sub1.bla.nl => sub2.bla.nl
+- bla.nl:15001 => bla.nl:8589
+
+Is een security-feature _in de browser_
+- stuurt een preflight OPTIONS-request om metadata uit te lezen via HTTP header "access-control-allow-origin: http://..."
+
+
 ## Coole links
 
 - [Awesome Blazor](https://github.com/AdrienTorris/awesome-blazor?tab=readme-ov-file#libraries--extensions)

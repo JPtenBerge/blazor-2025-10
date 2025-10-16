@@ -18,7 +18,12 @@ public class SnackRepository : ISnackRepository
         throw new NotImplementedException();
     }
 
-    public async Task<Snack> AddAsync(Snack newSnack)
+    public Task<Snack> AddAsync(Snack newSnack)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<bool> DeleteAsync(int id)
     {
         throw new NotImplementedException();
     }

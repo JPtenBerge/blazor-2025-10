@@ -14,6 +14,7 @@ public static class SnackEndpoints
         group.MapGet("/{id:int}", Get);
         group.MapPost("/", Post);
         group.MapPut("/{id:int}", Put);
+        group.MapDelete("/{id:int}", Delete);
     }
 
     public static async Task<SnackGetAllResponseDto> GetAll(ISnackRepository snackRepository)
@@ -37,5 +38,12 @@ public static class SnackEndpoints
 
     public static async Task Put()
     {
+    }
+
+    public static async Task<bool> Delete(ISnackRepository snackRepository, int id)
+    {
+        
+        
+        return await snackRepository.DeleteAsync(id);
     }
 }

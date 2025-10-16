@@ -30,4 +30,9 @@ public class SnackDbRepository : ISnackRepository
         await _context.SaveChangesAsync();
         return newSnack; // Id has been added
     }
+
+    public async Task<bool> DeleteAsync(int id)
+    {
+        return await _context.Snacks.Where(x => x.Id == id).ExecuteDeleteAsync() == 1;
+    }
 }

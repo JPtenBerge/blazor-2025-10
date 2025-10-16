@@ -10,7 +10,7 @@
 
 @code {
     public Snack Snack { get; set; } = new();
-    [SupplyParameterFromForm] public IFormFile Bestand { get; set; }
+    [SupplyParameterFromForm] public IFormFile Bestand { get; set; } = null!;
 
 
     async Task Handle()

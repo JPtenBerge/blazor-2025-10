@@ -36,8 +36,9 @@ public static class SnackEndpoints
         return (await snackRepository.AddAsync(newSnack.ToEntity())).ToPostDto();
     }
 
-    public static async Task Put()
+    public static Task Put()
     {
+        throw new NotImplementedException();
     }
 
     public static async Task<bool> Delete(ISnackRepository snackRepository, int id)

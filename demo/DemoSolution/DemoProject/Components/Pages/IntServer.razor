@@ -2,7 +2,6 @@
 @using Demo.Shared.Entities
 @using Demo.Shared.Repositories
 @using DemoProject.Components.Layout
-@using DemoProject.Repositories
 @inject ISnackRepository SnackRepository
 @rendermode InteractiveServer
 <h3>IntServer</h3>
@@ -20,9 +19,9 @@ Counter: @Counter
 <MudButton Color="Color.Primary" OnClick="Increment">Increment</MudButton>
 
 @code {
-    public int Counter { get; set; } = 0;
-    public List<Snack> Snacks { get; set; }
-    
+    public int Counter { get; set; }
+    public List<Snack>? Snacks { get; set; }
+
     protected override async Task OnInitializedAsync()
     {
         Snacks = (await SnackRepository.GetAllAsync()).ToList();
@@ -38,4 +37,5 @@ Counter: @Counter
     {
         Console.WriteLine($"Hey er is een snack geselecteerd! {snack.Name}");
     }
+
 }

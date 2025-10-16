@@ -7,8 +7,8 @@ namespace DemoProject.Tests;
 
 class Car
 {
-    public string Make { get; set; }
-    public string Model { get; set; }
+    public required string Make { get; set; }
+    public required string Model { get; set; }
 }
 
 [TestClass]
@@ -16,7 +16,7 @@ public sealed class AutocompleterIntegrationTests
 {
     private IRenderedComponent<Autocompleter<Car>> _fixture = null!;
     private Autocompleter<Car> _sut = null!;
-    
+
     [TestInitialize]
     public void Init()
     {
@@ -37,7 +37,7 @@ public sealed class AutocompleterIntegrationTests
         });
         _sut = _fixture.Instance;
     }
-    
+
     [TestMethod]
     public void Autocomplete_BasicQuery_RendersSuggestions()
     {
@@ -47,7 +47,7 @@ public sealed class AutocompleterIntegrationTests
         // Act
         _sut.Autocomplete();
         _fixture.Render();
-        
+
         // Assert
         _fixture.FindAll("li").Count.Should().Be(5);
         _fixture.Markup.Should().Contain("Nissan Pixo");

@@ -287,6 +287,45 @@ End-to-end testing
 Manual testing
 - mens
 
+## OAuth en tokens
+
+- JWT - uitgesproken als "jot"
+  - de populairste in OAuth-land
+- SAML - Security Application Markup Language
+
+3 soorten JWT's
+
+- id token: dit is jij. langer in leven   uur+
+- access token: om iets te doen bij een API. meestal houdbaar/lifetime: 5 minuten tot een uur
+- refresh token: refresh voor access token.
+  - voor offline access zonder dat de gebruiker erbij kijken
+
+Te herkennen aan `eyqqqq.wwwwwwwww.eeeeeeeeee`
+ 
+- header (hash-algoritme)
+- payload
+- signature (zeker zijn dat token onderweg niet is aangepast)
+
+Zonder BFF, in de browser, waar sla je dat token op?
+
+- local storage
+  - simpele API - geen bescherming voor XSS - persisted/reflected/DOM?
+- session storage
+  - simpele API - geen bescherming voor XSS
+- indexeddb
+  - complexe API - maar nog steeds geen bescherming voor XSS
+- cookie
+  - HttpOnly - niet meer uitleesbaar via JS (yay geen XSS)
+  - XSRF
+- in-memory
+  - SPA 👍
+  - globale variabele / closure
+  - druk op F5 en je bent uitgelogd
+
+Zeker weten dat je (persisted) XSS voorkomt kan een reden zijn om alsnog voor een van de storages te kiezen.
+
+Zie ook OWASP: https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html#token-storage-on-client-side
+
 ## Coole links
 
 - [Awesome Blazor](https://github.com/AdrienTorris/awesome-blazor?tab=readme-ov-file#libraries--extensions)

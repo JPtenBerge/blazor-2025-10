@@ -1,11 +1,8 @@
-using System.Runtime.CompilerServices;
 using Demo.Shared.Dtos;
-using Demo.Shared.Entities;
 using Demo.Shared.Repositories;
 using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
 
-namespace DemoProject.Endpoints;
+namespace DemoBackend.Endpoints;
 
 public static class SnackEndpoints
 {

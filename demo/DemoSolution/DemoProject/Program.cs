@@ -1,7 +1,6 @@
 using Demo.Shared.Repositories;
 using DemoProject.Components;
 using DemoProject.DataAccess;
-using DemoProject.Endpoints;
 using DemoProject.Repositories;
 using Duende.Bff.Blazor;
 using Microsoft.EntityFrameworkCore;
@@ -107,8 +106,6 @@ app.UseAuthorization();
 app.UseAntiforgery();
 
 app.MapBffManagementEndpoints();
-
-app.MapSnackEndpoints();
 
 app.MapStaticAssets();
 app.MapRazorComponents<App>()

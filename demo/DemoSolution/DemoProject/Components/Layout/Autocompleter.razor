@@ -9,7 +9,7 @@
         @for (var i = 0; i < Suggestions.Count; i++)
         {
             var suggestion = Suggestions[i];
-            <li class="@(i == ActiveSuggestionIndex ? "highlight" : "")">@JsonSerializer.Serialize(suggestion)</li>
+            <li class="@(i == ActiveSuggestionIndex ? "highlight" : "")">@ItemTemplate(suggestion)</li>
         }
     </ul>
 }

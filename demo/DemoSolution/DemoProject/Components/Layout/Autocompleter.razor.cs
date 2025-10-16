@@ -12,6 +12,7 @@ public partial class Autocompleter<T> : ComponentBase
 	public List<T>? Suggestions { get; set; }
 	public int? ActiveSuggestionIndex { get; set; }
 	[Parameter] public EventCallback<T> OnSelect { get; set; }
+	[Parameter] public RenderFragment<T> ItemTemplate { get; set; }
 
 	public void Autocomplete()
 	{

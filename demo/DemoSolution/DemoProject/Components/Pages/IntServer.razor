@@ -8,7 +8,11 @@
 <h3>IntServer</h3>
 
 
-<Autocompleter T="Snack" Data="Snacks" OnSelect="HandleSelect" />
+<Autocompleter T="Snack" Data="Snacks" OnSelect="HandleSelect">
+    <ItemTemplate Context="snack">
+        @snack.Name krijgt een @snack.Rating
+    </ItemTemplate>
+</Autocompleter>
 
 
 Counter: @Counter

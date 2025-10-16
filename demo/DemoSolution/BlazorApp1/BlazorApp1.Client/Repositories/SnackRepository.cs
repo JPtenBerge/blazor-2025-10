@@ -9,7 +9,7 @@ public class SnackRepository : ISnackRepository
 {
     public async Task<IEnumerable<Snack>> GetAllAsync()
     {
-        var response = await "http://localhost:5075/api/snacks".GetJsonAsync<SnackGetAllResponseDto>();
+        var response = await "http://localhost:5002/api/snacks".GetJsonAsync<SnackGetAllResponseDto>();
         return response.Snacks.Select(s => s.ToEntity());
     }
 

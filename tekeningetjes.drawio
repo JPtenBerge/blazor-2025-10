@@ -1,0 +1,198 @@
+<mxfile host="65bd71144e">
+    <diagram id="2twVsMTmsJxOmvo7T2g_" name="Page-1">
+        <mxGraphModel dx="794" dy="629" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Gebruiker" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="70" y="60" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.monitor;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="60" width="40" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="ASP.NET Core" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/web_server.svg;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="35" width="80" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="database&lt;div&gt;met users/passes&lt;/div&gt;" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/database.svg;" vertex="1" parent="1">
+                    <mxGeometry x="500" y="51.5" width="90.54" height="67" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="/secret" style="shape=flexArrow;endArrow=classic;html=1;exitX=1.073;exitY=0.265;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.069;entryY=0.424;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="155.1099999999999" y="63.25" as="sourcePoint"/>
+                        <mxPoint x="375.52" y="67.39999999999998" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" value="redirect /login" style="shape=flexArrow;endArrow=classic;html=1;exitX=-0.073;exitY=0.71;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="364.1600000000001" y="91" as="sourcePoint"/>
+                        <mxPoint x="160" y="85" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="8" value="stuurt credentials" style="shape=flexArrow;endArrow=classic;html=1;exitX=1.073;exitY=0.265;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.069;entryY=0.424;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="155.1099999999999" y="113.25" as="sourcePoint"/>
+                        <mxPoint x="375.52" y="117.39999999999998" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="9" value="" style="endArrow=none;html=1;entryX=0.037;entryY=0.611;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="4" target="5">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="320" y="200" as="sourcePoint"/>
+                        <mxPoint x="370" y="150" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="cookie met session ID" style="shape=flexArrow;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="360" y="140" as="sourcePoint"/>
+                        <mxPoint x="150" y="140" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="12" value="/secret met cookie" style="shape=flexArrow;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="150" y="160" as="sourcePoint"/>
+                        <mxPoint x="370" y="160" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" value="/secret met cookie" style="shape=flexArrow;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="150" y="170" as="sourcePoint"/>
+                        <mxPoint x="370" y="170" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="14" value="/secret met cookie" style="shape=flexArrow;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="150" y="181" as="sourcePoint"/>
+                        <mxPoint x="370" y="181" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="15" value="/secret met cookie" style="shape=flexArrow;endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="150" y="192" as="sourcePoint"/>
+                        <mxPoint x="370" y="192" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="16" value="session" style="whiteSpace=wrap;html=1;shape=mxgraph.basic.document;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                    <mxGeometry x="425" y="5" width="55" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="session" style="whiteSpace=wrap;html=1;shape=mxgraph.basic.document" vertex="1" parent="1">
+                    <mxGeometry x="490" y="5" width="55" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="session" style="whiteSpace=wrap;html=1;shape=mxgraph.basic.document" vertex="1" parent="1">
+                    <mxGeometry x="425" y="40" width="55" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="Gebruiker" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="270" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="database&lt;div&gt;met users/passes&lt;/div&gt;" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/database.svg;" vertex="1" parent="1">
+                    <mxGeometry x="570" y="261.5" width="90.54" height="67" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="ASP.NET Core&amp;nbsp; API&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Google&lt;/div&gt;&lt;div&gt;Facebook&lt;/div&gt;&lt;div&gt;Reddit&lt;/div&gt;&lt;div&gt;Twitter/X&lt;/div&gt;" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/web_server.svg;" vertex="1" parent="1">
+                    <mxGeometry x="450" y="258.5" width="80" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="Jeroens&#39;sheleveiligegoogleproxy.com&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Runkeeper&lt;/div&gt;&lt;div&gt;Strava&lt;/div&gt;&lt;div&gt;third-party Twitter&lt;/div&gt;&lt;div&gt;third-party Reddit&lt;/div&gt;" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/generic_server.svg;" vertex="1" parent="1">
+                    <mxGeometry x="220" y="255.5" width="57.68" height="103" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="token" style="endArrow=none;html=1;entryX=0.101;entryY=0.385;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="29" target="27">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="150" y="295.574506415429" as="sourcePoint"/>
+                        <mxPoint x="240" y="300" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="29" value="" style="sketch=0;aspect=fixed;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;fillColor=#00188D;shape=mxgraph.mscae.enterprise.android_phone" vertex="1" parent="1">
+                    <mxGeometry x="80" y="270" width="30" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="access token" style="endArrow=none;html=1;" edge="1" parent="1" source="27" target="25">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="310" y="340" as="sourcePoint"/>
+                        <mxPoint x="360" y="290" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="31" value="Identity Provider&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Azure Entra ID&lt;/div&gt;&lt;div&gt;Auth0 ($$$)&lt;/div&gt;&lt;div&gt;Google&lt;/div&gt;&lt;div&gt;Firebase&lt;/div&gt;&lt;div&gt;Twitter/X&lt;/div&gt;&lt;div&gt;Lego&lt;/div&gt;&lt;div&gt;GitHub&lt;/div&gt;&lt;div&gt;Microsoft&lt;/div&gt;&lt;div&gt;Apple&lt;/div&gt;&lt;div&gt;DigiD&lt;/div&gt;&lt;div&gt;itsme&lt;/div&gt;&lt;div&gt;Meta&lt;/div&gt;" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/web_server.svg;" vertex="1" parent="1">
+                    <mxGeometry x="158.84" y="500" width="80" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="token na&amp;nbsp;&lt;div&gt;inloggen&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;ID token&lt;/div&gt;" style="endArrow=none;html=1;entryX=0.42;entryY=0.894;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="31" target="29">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="310" y="470" as="sourcePoint"/>
+                        <mxPoint x="190" y="360" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="90" y="480"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="33" value="Blazor Static SSR&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;MPA&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="660.54" y="70" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="Blazor Static SSR&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;SPA&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="720.54" y="310" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="Gebruiker" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="30" y="898.5" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="database&lt;div&gt;met users/passes&lt;/div&gt;" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/database.svg;" vertex="1" parent="1">
+                    <mxGeometry x="580" y="891.5" width="90.54" height="67" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="ASP.NET Core&amp;nbsp; API&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Google&lt;/div&gt;&lt;div&gt;Facebook&lt;/div&gt;&lt;div&gt;Reddit&lt;/div&gt;&lt;div&gt;Twitter/X&lt;/div&gt;" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/web_server.svg;" vertex="1" parent="1">
+                    <mxGeometry x="460" y="888.5" width="80" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="Backend For Frontend:&amp;nbsp;&lt;div&gt;token veilig opslaan&lt;/div&gt;&lt;div&gt;prerenderen&lt;/div&gt;&lt;div&gt;gateway&lt;/div&gt;&lt;div&gt;load balancing&lt;/div&gt;&lt;div&gt;centrale auth&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;DemoProject&lt;/div&gt;" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/generic_server.svg;" vertex="1" parent="1">
+                    <mxGeometry x="210" y="885.5" width="57.68" height="103" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" value="cookie" style="endArrow=none;html=1;entryX=0.101;entryY=0.385;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" target="38">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="120" y="925" as="sourcePoint"/>
+                        <mxPoint x="250" y="930" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="41" value="access token" style="endArrow=none;html=1;" edge="1" parent="1" source="38" target="37">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="320" y="970" as="sourcePoint"/>
+                        <mxPoint x="370" y="920" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="42" value="Identity Provider&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Azure Entra ID&lt;/div&gt;&lt;div&gt;Auth0 ($$$)&lt;/div&gt;&lt;div&gt;Google&lt;/div&gt;&lt;div&gt;Firebase&lt;/div&gt;&lt;div&gt;Twitter/X&lt;/div&gt;&lt;div&gt;Lego&lt;/div&gt;&lt;div&gt;GitHub&lt;/div&gt;&lt;div&gt;Microsoft&lt;/div&gt;&lt;div&gt;Apple&lt;/div&gt;&lt;div&gt;DigiD&lt;/div&gt;&lt;div&gt;itsme&lt;/div&gt;&lt;div&gt;Meta&lt;/div&gt;" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/web_server.svg;" vertex="1" parent="1">
+                    <mxGeometry x="168.84" y="1130" width="80" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="token na&amp;nbsp;&lt;div&gt;inloggen&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;ID token&lt;/div&gt;" style="endArrow=none;html=1;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="42" target="38">
+                    <mxGeometry x="-0.999" y="59" width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="320" y="1100" as="sourcePoint"/>
+                        <mxPoint x="102.60000000000002" y="944.7" as="targetPoint"/>
+                        <Array as="points"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="44" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.computer;pointerEvents=1;" vertex="1" parent="1">
+                    <mxGeometry x="60" y="901.5" width="50" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/web_server.svg;" vertex="1" parent="1">
+                    <mxGeometry x="477.5" y="1110" width="32" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/web_server.svg;" vertex="1" parent="1">
+                    <mxGeometry x="548" y="1080" width="32" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/web_server.svg;" vertex="1" parent="1">
+                    <mxGeometry x="393" y="1050" width="32" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/web_server.svg;" vertex="1" parent="1">
+                    <mxGeometry x="400" y="970" width="32" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/web_server.svg;" vertex="1" parent="1">
+                    <mxGeometry x="400" y="851.5" width="32" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/web_server.svg;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="811.5" width="32" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/web_server.svg;" vertex="1" parent="1">
+                    <mxGeometry x="529.27" y="870" width="32" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="330" y="1130" as="sourcePoint"/>
+                        <mxPoint x="380" y="1080" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="53" value="OAuth&lt;div&gt;Open ID Connect&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="277.68" y="1165" width="127" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

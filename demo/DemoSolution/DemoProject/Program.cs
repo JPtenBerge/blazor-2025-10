@@ -20,6 +20,9 @@ builder.Services.AddBff()
     .AddServerSideSessions() // Add in-memory implementation of server side sessions
     .AddBlazorServer();
 
+builder.Services.AddReverseProxy()
+    .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
+
 builder.Services.AddAuthentication(options =>
     {
         options.DefaultScheme = "cookie";
@@ -100,6 +103,8 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseBff();
 app.UseAuthorization();
+
+app.MapReverseProxy();
 
 // app.UseCors("frontend");
 

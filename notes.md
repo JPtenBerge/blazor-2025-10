@@ -264,6 +264,28 @@ Een AJAX-call doen vanaf domein A naar domein B.
 Is een security-feature _in de browser_
 - stuurt een preflight OPTIONS-request om metadata uit te lezen via HTTP header "access-control-allow-origin: http://..."
 
+## Testing
+
+Unit testing
+- zo klein mogelijk stukje code
+  - 1 methode
+- lekker snel   1ms
+
+Integration testing
+- kan verschillende vormen aannemen:
+  - class A met B
+  - HTML renderen van een component
+  - database
+  - API request
+
+End-to-end testing
+- <=================>
+- frontend naar backend (inclusief db)
+- op een volledig gedeployde omgeving
+- Playwright
+
+Manual testing
+- mens
 
 ## Coole links
 

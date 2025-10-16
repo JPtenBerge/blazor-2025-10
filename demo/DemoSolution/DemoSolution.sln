@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Shared", "Demo.Shared\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoProject.Tests", "DemoProject.Tests\DemoProject.Tests.csproj", "{084ADA68-7FE8-43E6-BB4A-3D5DA5834C8F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityProvider", "IdentityProvider\IdentityProvider.csproj", "{44FC74EB-D94C-4839-891D-BE589A0BCD99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

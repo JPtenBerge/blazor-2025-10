@@ -332,4 +332,32 @@ Zie ook OWASP: https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for
 - [MudBlazor.StaticInput](https://github.com/0phois/MudBlazor.StaticInput)
 - [Dependency injection bij Blazor WebAssembly - Scoped is Singleton](https://learn.microsoft.com/en-us/aspnet/core/blazor/fundamentals/dependency-injection?view=aspnetcore-9.0#service-lifetime)
 - [Dapper, alternatief op EF Core](https://github.com/DapperLib/Dapper)
+- [Frontend framework benchmarks](https://github.com/krausest/js-framework-benchmark)
 
+## Technisch
+
+
+Technische voordelen:
+- Componentgebaseerde development
+  - Content projection    `<Autocompleter><ItemTemplate>...</...>`
+- C# typesafety
+
+Technische nadelen:
+- clunky
+- combo prerender+server+webassembly  complexiteit
+- Developer Experience (DX)
+  - HMR
+  - `@bind-...="..."`
+- ElementReference struct
+- EditForm/EditContext  IEditForm
+- frontend framework benchmark
+- duurt allemaal lang
+
+
+`public ElementReference JouwInput { get; set; } // <== struct` - niet mocken.  `new Mock<ElementReference>`  `new Mock<int>`
+```html
+<input @ref="JouwInput">
+```
+```cs
+await JouwInput.FocusAsync();
+```

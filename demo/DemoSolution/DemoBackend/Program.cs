@@ -15,6 +15,11 @@ builder.Services.AddDbContext<SnackContext>(options =>
 });
 builder.Services.AddTransient<ISnackRepository, SnackDbRepository>();
 
+builder.Services.AddMemoryCache();
+
+// builder.Services.AddDistributedMemoryCache()
+// Redis
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
     options.Authority = "https://localhost:5001";

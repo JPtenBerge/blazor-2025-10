@@ -1,0 +1,78 @@
+@page "/Interop"
+@using System.Text.Json
+@inject IJSRuntime Ysje
+@rendermode InteractiveWebAssembly
+
+<h3>Interop</h3>
+
+Teller: @Teller
+
+<button @onclick="StartCounting">Start teller</button>
+
+<button @onclick="GetString">GetString</button>
+<button @onclick="GetObject">GetObject</button>
+<button @onclick="GetPromise">GetPromise</button>
+
+<dl>
+    <dt>StringResult:</dt>
+    <dd>@StringResult</dd>
+    <dt>ObjResult:</dt>
+    <dd>@(ObjResult is not null ? JsonSerializer.Serialize(ObjResult) : "")</dd>
+    <dt>PromiseResult:</dt>
+    <dd>@PromiseResult</dd>
+</dl>
+
+@code {
+    public int Teller { get; set; }
+    public string? StringResult { get; set; }
+    public Objectje? ObjResult { get; set; }
+    public string? PromiseResult { get; set; }
+
+    void StartCounting()
+    {
+        new Thread(() =>
+        {
+            Console.WriteLine("hoi!");
+        }).Start();
+
+
+        // new Timer(new TimerCallback(async _ =>
+        // {
+        //     Teller++;
+        //     Console.WriteLine($"Teller is nu {Teller}");
+        //     await InvokeAsync(() => StateHasChanged()); // mogelijk nodig bij Blazor Server, bij Blazor WebAssembly 
+        // }), null, 1000, 1000);
+    }
+
+    void GetString()
+    {
+        var yspro = (IJSInProcessRuntime)Ysje; // enkel voor WASM
+        StringResult = yspro.Invoke<string>("getTekst");
+    }
+
+    void GetObject()
+    {
+        var yspro = (IJSInProcessRuntime)Ysje;
+        ObjResult = yspro.Invoke<Objectje>("getObj");
+    }
+
+    async Task GetPromise()
+    {
+        var getal = await Ysje.InvokeAsync<GeolocationPosition>("getAsyncSpul");
+        Console.WriteLine(JsonSerializer.Serialize(getal));
+    }
+
+    public class Objectje
+    {
+        public int X { get; set; }
+        public string Y { get; set; }
+    }
+
+    public class GeolocationPosition
+    {
+        public decimal Latitude { get; set; }
+        public decimal Longitude { get; set; }
+        public decimal Accuracy { get; set; }
+    }
+
+}

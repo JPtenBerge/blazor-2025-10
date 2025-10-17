@@ -1,9 +1,40 @@
 @page "/Saaie"
+@using Microsoft.AspNetCore.Components.Authorization
 @rendermode InteractiveWebAssembly
-<h3>Saaie</h3>
+@inject AuthenticationStateProvider AuthStateProvider
 
-Hier doe ik niks.
+<h3>Minder saaie</h3>
+
+@if (State is not null)
+{
+    <table>
+        <thead>
+        <tr>
+            <th>Type</th>
+            <th>Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var claim in State.User.Claims)
+        {
+            <tr>
+                <td>@claim.Type</td>
+                <td>@claim.Value</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+
+
 
 @code {
-    
+    public AuthenticationState? State { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        State = await AuthStateProvider.GetAuthenticationStateAsync();
+    }
+
 }

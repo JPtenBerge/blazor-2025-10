@@ -1,7 +1,10 @@
+using System.Security.Claims;
 using Demo.Shared.Repositories;
 using DemoBackend.DataAccess;
 using DemoBackend.Endpoints;
 using DemoBackend.Repositories;
+using Duende.IdentityModel;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +15,28 @@ builder.Services.AddDbContext<SnackContext>(options =>
 });
 builder.Services.AddTransient<ISnackRepository, SnackDbRepository>();
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.Authority = "https://localhost:5001";
+    options.TokenValidationParameters = new()
+    {
+        ValidateAudience = false, // tijdelijk
+        ValidateIssuer = false,
+        NameClaimType = JwtClaimTypes.Name
+    };
+});
+
+// HTTP-header  Authorization: Bearer ey...
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("alleencoolemensen", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+        policy.RequireClaim("name", "Bob Smith");
+    });
+});
+
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
@@ -21,6 +46,20 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+app.Use(async (context, next) =>
+{
+    if (context.Request.Headers.TryGetValue("Authorization", out var authorization))
+    {
+        Console.WriteLine($"auth header: {authorization}");
+    }
+    else
+    {
+        Console.WriteLine("geen auth header");
+    }
+    
+    await next();
+});
 
 app.UseHttpsRedirection();
 

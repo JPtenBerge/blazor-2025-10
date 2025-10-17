@@ -3,6 +3,7 @@ using DemoProject.Components;
 using DemoProject.DataAccess;
 using DemoProject.Repositories;
 using Duende.Bff.Blazor;
+using Duende.Bff.Yarp;
 using Microsoft.EntityFrameworkCore;
 using MudBlazor.Services;
 
@@ -21,7 +22,8 @@ builder.Services.AddBff()
     .AddBlazorServer();
 
 builder.Services.AddReverseProxy()
-    .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
+    .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"))
+    .AddBffExtensions();;
 
 builder.Services.AddAuthentication(options =>
     {

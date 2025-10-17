@@ -23,8 +23,9 @@ public class SnackRepository : ISnackRepository
         throw new NotImplementedException();
     }
 
-    public Task<bool> DeleteAsync(int id)
+    public async Task<bool> DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        var result = await $"https://localhost:5002/api/snacks/{id}".DeleteAsync().ReceiveString();
+        return result == "true";
     }
 }

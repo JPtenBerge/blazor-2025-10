@@ -2,6 +2,7 @@ using System.Security.Claims;
 using Demo.Shared.Dtos;
 using Demo.Shared.Entities;
 using Demo.Shared.Repositories;
+using DemoBackend.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.Extensions.Caching.Memory;
@@ -25,7 +26,8 @@ public static class SnackEndpoints
     public static async Task<SnackGetAllResponseDto> GetAll(ISnackRepository snackRepository, IMemoryCache memCache,
         ClaimsPrincipal user)
     {
-        Console.WriteLine($"Getting (cached) snacks voor {user.Identity?.Name}, is authed: {user.Identity?.IsAuthenticated}");
+        Console.WriteLine(
+            $"Getting (cached) snacks voor {user.Identity?.Name}, is authed: {user.Identity?.IsAuthenticated}");
 
         var snacks = (await memCache.GetOrCreateAsync<IEnumerable<Snack>>("snacks", async entry =>
         {
@@ -55,16 +57,19 @@ public static class SnackEndpoints
         throw new NotImplementedException();
     }
 
-    public static async Task<Results<NotFound<string>, Ok<bool>>> Delete(IAuthorizationService authorizationService,
-        ISnackRepository snackRepository, ClaimsPrincipal user, int id)
+    public static async Task<Results<NotFound<string>, UnauthorizedHttpResult<string>, Ok<bool>>> Delete(
+        IAuthorizationService authorizationService, ISnackRepository snackRepository, ClaimsPrincipal user, int id)
     {
-        // Microsoft.AspNetCore.Http.HttpResults.UnauthorizedHttpResult
         var snack = await snackRepository.GetAsync(id);
         if (snack is null) return TypedResults.NotFound($"Could not find snack with id {id}");
 
-        var result = await authorizationService.AuthorizeAsync(user, snack, "req");
-        // if (!result.Succeeded) return TypedResults.Unauthorized($"This snack is not yours to delete");
+        Console.WriteLine("Checking auth");
+        
+        var result = await authorizationService.AuthorizeAsync(user, snack, "BobPolicy");
+        if (!result.Succeeded) return TypedResultsExtensions.Unauthorized($"This snack is not yours to delete");
 
+        Console.WriteLine("Verwijderen!");
+        
         return TypedResults.Ok(await snackRepository.DeleteAsync(id));
     }
 }

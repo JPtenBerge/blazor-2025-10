@@ -20,7 +20,10 @@ Is interactive: @RendererInfo.IsInteractive<br/>
     <ul>
         @foreach (var snack in Snacks)
         {
-            <li>@snack.Name</li>
+            <li>@snack.Name [
+                <button @onclick="() => Delete(snack)">Delete</button>
+                ]
+            </li>
         }
     </ul>
 }
@@ -32,6 +35,13 @@ Is interactive: @RendererInfo.IsInteractive<br/>
     void Increment()
     {
         Teller++;
+    }
+
+    async Task Delete(Snack snack)
+    {
+        Console.WriteLine("Delete actie uitzetten");
+        var result = await SnackRepository.DeleteAsync(snack.Id);
+        Console.WriteLine(result ? "delete success!" : "delete fail");
     }
 
     // zowel server-side als client-side

@@ -1,10 +1,12 @@
 using System.Security.Claims;
+using Demo.Shared.Auth;
 using Demo.Shared.Repositories;
 using DemoBackend.DataAccess;
 using DemoBackend.Endpoints;
 using DemoBackend.Repositories;
 using Duende.IdentityModel;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,12 +37,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 
 builder.Services.AddAuthorization(options =>
 {
+    options.AddPolicy("BobPolicy", policy => policy.Requirements.Add(new BobAuthorRequirement()));
+
     options.AddPolicy("alleencoolemensen", policy =>
     {
         policy.RequireAuthenticatedUser();
         policy.RequireClaim("name", "Bob Smith");
     });
 });
+
+builder.Services.AddSingleton<IAuthorizationHandler, BobAuthorizationHandler>();
 
 builder.Services.AddOpenApi();
 
@@ -62,7 +68,7 @@ app.Use(async (context, next) =>
     {
         Console.WriteLine("geen auth header");
     }
-    
+
     await next();
 });
 
